@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE database `hostel`;
 use hostel;
 CREATE TABLE `issues` (
-  `issue_id` int(11) auto_increment primary key,
+  `issue_id` int(11) not null,
   `raised_by` int(11) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `details` text NOT NULL,
