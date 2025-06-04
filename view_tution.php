@@ -37,10 +37,13 @@ $user_id = $_SESSION['user_id'];
                     <th>Location</th>
                     <th>Date</th>
                 </tr>
-                <?php
-                $result = $conn->query("SELECT * FROM tuitions WHERE id=$user_id");
+                <tbody>
+                    <?php
+                $sql="SELECT * FROM tuitions WHERE student_id=$user_id";
+                    $res = $conn->query($sql);
                 // echo "SELECT * FROM tuitions WHERE student_id=$user_id";
-                while ($row = $result->fetch_assoc()) {
+
+                while ($row = $res->fetch_assoc()) {
                     echo "<tr>
                             <td>{$row['student_name']}</td>
                             <td>{$row['day']}</td>
@@ -51,6 +54,7 @@ $user_id = $_SESSION['user_id'];
                         </tr>";
                 }
                 ?>
+                </tbody>
             </table>
     </div>
 </body>
