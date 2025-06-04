@@ -1,5 +1,12 @@
 <?php
 include 'db.php'; // Make sure db.php has DB connection
+ob_start();
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ./logout.php");
+    exit();
+}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = $_POST['first_name'];
@@ -122,9 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-    <div class="navbar">
-        <h2>Hostel Management System - Register</h2>
-    </div>
+    <?php include "navbar.php"?>
     <div class="container">
         <h1>Register</h1>
         <?php

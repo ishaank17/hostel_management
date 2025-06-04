@@ -3,7 +3,7 @@ session_start();
 include 'db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ./");
     exit();
 }
 
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $role == 'student') {
 </head>
 <body >
 <?php include 'navbar.php'; ?> 
-    <div class="container">
+    <div class="container table-responsive">
         <h2>Tuition Management</h2>
 
         <?php if ($role == 'student') { ?>
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $role == 'student') {
 
         <?php if ($role == 'admin') { ?>
             <h3>Tuition Records</h3>
-            <table border="1" cellpadding="10" cellspacing="0" width="100%">
+            <table border="1" cellpadding="10" cellspacing="0" width="100%" >
                 <tr>
                     <th>Student Name</th>
                     <th>Day</th>

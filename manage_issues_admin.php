@@ -3,7 +3,7 @@ session_start();
 include 'db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: ./");
     exit();
 }
 
@@ -25,7 +25,7 @@ $result = $conn->query($sql);
     <?php include"navbar.php"; ?>
     <div class="container table-responsive">
         <h2>Manage Student Issues</h2>
-    <table border="1" class="table">
+    <table border="1" >
         <tr>
             <th scope="col">Issue ID</th>
             <th scope="col">Raised By</th>

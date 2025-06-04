@@ -1,7 +1,8 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
-    header("Location: login.php");
+    header("Location: ./");
     exit();
 }
 ?>
@@ -66,7 +67,11 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
                 <li><a href="view_issues_student.php">My Issues</a></li>
                 <li><a href="tuition.php">Tuition Management</a></li>
                 <li><a href="laundary.php">Laundary</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="logout.php">Logout</a></li> 
+            </ul>
+            <ul>
+                <li><a href="view_tution.php">My Tution</a></li>
+                <li><a href="view_laundry.php">My Laundary</a></li>
             </ul>
     
     </div>

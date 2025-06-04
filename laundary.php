@@ -3,7 +3,7 @@ session_start();
 include 'db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ./");
     exit();
 }
 
@@ -49,48 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $role == 'student') {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-    <!-- <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            padding: 20px;
-            text-align: center;
-        }
-        .container {
-            width: 60%;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px gray;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
-        input[type="number"] {
-            width: 60px;
-            text-align: center;
-        }
-        .btn {
-            padding: 10px;
-            background: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        .btn:hover {
-            background: #0056b3;
-        }
-    </style> -->
+    
     <script>
         function calculateTotal() {
             let total = 0;
@@ -104,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $role == 'student') {
 </head>
 <body>
 <?php include 'navbar.php'; ?> 
-    <div class="container">
+    <div class="container table-responsive">
         <h2>Laundry Management</h2>
 
         <?php if ($role == 'student') { ?>

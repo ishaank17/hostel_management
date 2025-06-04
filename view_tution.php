@@ -1,0 +1,57 @@
+<?php
+session_start();
+include 'db.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ./");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuition Management</title>
+    <!-- Add this in your HTML <head> section -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body >
+<?php include 'navbar.php'; ?> 
+    <div class="container table-responsive">
+        <h2>Tuition Management</h2>
+            <h3>Tuition Records</h3>
+            <table border="1" cellpadding="10" cellspacing="0" width="100%" >
+                <tr>
+                    <th>Student Name</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Subject</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+                <?php
+                $result = $conn->query("SELECT * FROM tuitions WHERE id=$user_id");
+                // echo "SELECT * FROM tuitions WHERE student_id=$user_id";
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>{$row['student_name']}</td>
+                            <td>{$row['day']}</td>
+                            <td>{$row['from_time']} - {$row['to_time']}</td>
+                            <td>{$row['subject']}</td>
+                            <td>{$row['location']}</td>
+                            <td>{$row['tuition_date']}</td>
+                        </tr>";
+                }
+                ?>
+            </table>
+    </div>
+</body>
+</html>
