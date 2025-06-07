@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $_POST['role'];
 
     // Prepare SQL query to fetch user details
-    $sql = "SELECT id, username, password, role FROM users WHERE username = ? AND role = ?";
+    $sql = "SELECT id, username, password, role,grade FROM users WHERE username = ? AND role = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $username, $role);
     $stmt->execute();
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
-
+            $_SESSION['grade'] = $user['grade'];
             // Redirect based on role
             if ($user['role'] == 'admin') {
                 header("Location: admin_dashboard.php");

@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $raised_by = $_SESSION['user_id'];
     $subject = $_POST['subject'];
     $details = $_POST['details'];
-    $priority = $_POST['priority'];
+    $priority = 'normal';
 
     $sql = "INSERT INTO issues (raised_by, subject, details, priority) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
@@ -48,12 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <br><br>
         <label>Details:</label>
         <textarea name="details" required></textarea>
-        <br><br>
-        <label>Priority:</label>
-        <select name="priority">
-            <option value="urgent">Urgent</option>
-            <option value="normal">Normal</option>
-        </select>
         <br><br>
         <button type="submit" class="btn">Submit Issue</button>
     </form>

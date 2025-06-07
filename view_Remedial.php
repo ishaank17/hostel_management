@@ -16,7 +16,7 @@ $user_id = $_SESSION['user_id'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuition Management</title>
+    <title>Remedial  Management</title>
     <!-- Add this in your HTML <head> section -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,8 +26,8 @@ $user_id = $_SESSION['user_id'];
 <body >
 <?php include 'navbar.php'; ?> 
     <div class="container table-responsive">
-        <h2>Tuition Management</h2>
-            <h3>Tuition Records</h3>
+        <h2>Remedial Management</h2>
+            <h3>Remedial Records</h3>
             <table border="1" cellpadding="10" cellspacing="0" width="100%" >
                 <tr>
                     <th>Student Name</th>

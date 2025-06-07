@@ -7,7 +7,7 @@
             <li><a href="student_dashboard.php">Home</a></li>
             <li><a href="raise_issue.php">Raise Issue</a></li>
             <li><a href="view_issues_student.php">My Issues</a></li>
-            <li><a href="tuition.php">Tution</a></li>
+            <li><a href="Remedial.php">Remedial</a></li>
             <li><a href="laundary.php">Laundary</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
@@ -15,7 +15,7 @@
         <ul>
             <li><a href="admin_dashboard.php">Home</a></li>
             <li><a href="manage_issues_admin.php">Student Issues</a></li>
-            <li><a href="tuition.php">Tution</a></li>
+            <li><a href="tuition.php">Remedial</a></li>
             <li><a href="laundary.php">Laundary</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>

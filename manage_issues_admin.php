@@ -36,6 +36,7 @@ $result = $conn->query($sql);
             <th scope="col">Status</th>
             <th scope="col">Admin Comments</th>
             <th scope="col">Action</th>
+            <th scope='col'>Priority</th>
         </tr>
         <?php while ($row = $result->fetch_assoc()) { ?>
             <tr scope="row">
@@ -49,6 +50,9 @@ $result = $conn->query($sql);
                 <td><?php echo $row['admin_comments'] ?: 'No Comments'; ?></td>
                 <td>
                     <a href="update_issue.php?id=<?php echo $row['issue_id']; ?>">Update</a>
+                </td>
+                <td>
+                    <a href="change_priority.php?id=<?=$row['issue_id']?>&p=<?=$row['priority']?>">Change Priority</a>
                 </td>
             </tr>
         <?php } ?>

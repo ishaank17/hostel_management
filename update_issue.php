@@ -9,15 +9,16 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $issue_id = $_POST['issue_id'];
+
     $status = $_POST['status'];
     $admin_comments = $_POST['admin_comments'];
     $action_taken = $_POST['action_taken'];
     $action_resolve_date = $_POST['action_resolve_date'];
 
-    $sql = "UPDATE issues SET status=?, admin_comments=?, action_taken=?, action_resolve_date=? WHERE issue_id=?";
+    $sql = "UPDATE issues SET status=?, admin_comments=?, action_taken=?, action_resolve_date=?  WHERE issue_id=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssi", $status, $admin_comments, $action_taken, $action_resolve_date, $issue_id);
-
+    echo $sql;
     if ($stmt->execute()) {
         $sql = "SELECT email from users where id= (SELECT raised_by FROM issues where issue_id=$issue_id)";
         // echo $sql;

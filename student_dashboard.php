@@ -65,12 +65,12 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
             <ul>
                 <li><a href="raise_issue.php">Raise an Issue</a></li>
                 <li><a href="view_issues_student.php">My Issues</a></li>
-                <li><a href="tuition.php">Tuition Management</a></li>
+                <li><a href="Remedial.php">Remedial Management</a></li>
                 <li><a href="laundary.php">Laundary</a></li>
                 <li><a href="logout.php">Logout</a></li> 
             </ul>
             <ul>
-                <li><a href="view_tution.php">My Tution</a></li>
+                <li><a href="view_Remedial.php">My Remedial</a></li>
                 <li><a href="view_laundry.php">My Laundary</a></li>
             </ul>
     
