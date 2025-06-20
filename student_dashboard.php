@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
     <!-- Add this in your HTML <head> section -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+
     <link rel="stylesheet" href="style.css">
     <!-- <style>
         body {
@@ -63,17 +64,44 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
         
         
             <ul>
-                <li><a href="raise_issue.php">Raise an Issue</a></li>
-                <li><a href="view_issues_student.php">My Issues</a></li>
-                <li><a href="Remedial.php">Remedial Management</a></li>
-                <li><a href="laundary.php">Laundary</a></li>
+                <li >
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            My Issues
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="raise_issue.php">Raise an Issue</a>
+                            <a class="dropdown-item" href="view_issues_student.php">View raised Issues</a>
+                        </div>
+                        </div>
+                </li>
+                <li >
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            My Remedial
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Remedial.php">Manage Remedial</a>
+                            <a class="dropdown-item" href="view_Remedial.php">View Remedials</a>
+                        </div>
+                        </div>
+                </li>
+                <li >
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            My Laundary
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="laundary.php">Manage Laundary</a>
+                            <a class="dropdown-item" href="view_laundry.php">View My Laundary</a>
+                        </div>
+                        </div>
+                </li>
+                
                 <li><a href="logout.php">Logout</a></li> 
             </ul>
-            <ul>
-                <li><a href="view_Remedial.php">My Remedial</a></li>
-                <li><a href="view_laundry.php">My Laundary</a></li>
-            </ul>
-    
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

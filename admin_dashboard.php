@@ -31,7 +31,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
         
             <ul>
                 <li><a href="manage_issues_admin.php">Manage Student Issues</a></li>
-                <li><a href="tuition.php">Manage Tuition</a></li>
+                <li><a href="Remedial.php">Manage Tuition</a></li>
                 <li><a href="laundary.php">Manage Laundary</a></li>
                 <li><a href="register.php">Register</a></li>
                 <li><a href="logout.php">Logout</a></li>
