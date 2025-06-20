@@ -105,7 +105,10 @@ INSERT INTO `tuitions` (`id`, `student_id`, `student_name`, `day`, `from_time`, 
 (2, 3, 'Lochna', 'Wednesday', '12:00:00', '12:00:00', 'law', 'andheri', '2000-03-12', '2025-04-22 06:05:41'),
 (3, 4, 'saroj', 'Tuesday', '02:04:00', '03:04:00', 'extra class', 'bandra', '2025-05-04', '2025-04-28 08:53:50'),
 (4, 4, 'saroj', 'Tuesday', '02:04:00', '03:04:00', 'extra class', 'bandra', '2025-05-04', '2025-04-28 09:06:01'),
-(5, 4, 'saroj', 'Tuesday', '02:04:00', '03:04:00', 'extra class', 'bandra', '2025-05-04', '2025-04-28 09:06:47');
+(5, 4, 'saroj', 'Tuesday', '02:04:00', '03:04:00', 'extra class', 'bandra', '2025-05-04', '2025-04-28 09:06:47'),
+(8,'user','lname','user','$2y$10$LBZCYuuN/1i2VLntlF/9Ou5yASXrtHmcxP6t9alBophrgZWhpeIUW','1','user@gmail.com','11','pname','2','address','student','2025-05-29','2025-05-29 11:14:53'),
+(9,'admin','admin','admin','$2y$10$v9rKFRo9xZK7Lb4hld8Dcup7K7CvXlUswa5h7bAyyfqUJOsANEqeW',NULL,NULL,NULL,NULL,NULL,NULL,'admin',NULL,'2025-05-29 11:21:20');
+
 
 -- --------------------------------------------------------
 
