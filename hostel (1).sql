@@ -105,9 +105,8 @@ INSERT INTO `tuitions` (`id`, `student_id`, `student_name`, `day`, `from_time`, 
 (2, 3, 'Lochna', 'Wednesday', '12:00:00', '12:00:00', 'law', 'andheri', '2000-03-12', '2025-04-22 06:05:41'),
 (3, 4, 'saroj', 'Tuesday', '02:04:00', '03:04:00', 'extra class', 'bandra', '2025-05-04', '2025-04-28 08:53:50'),
 (4, 4, 'saroj', 'Tuesday', '02:04:00', '03:04:00', 'extra class', 'bandra', '2025-05-04', '2025-04-28 09:06:01'),
-(5, 4, 'saroj', 'Tuesday', '02:04:00', '03:04:00', 'extra class', 'bandra', '2025-05-04', '2025-04-28 09:06:47'),
-(8,'user','lname','user','$2y$10$LBZCYuuN/1i2VLntlF/9Ou5yASXrtHmcxP6t9alBophrgZWhpeIUW','1','user@gmail.com','11','pname','2','address','student','2025-05-29','2025-05-29 11:14:53'),
-(9,'admin','admin','admin','$2y$10$v9rKFRo9xZK7Lb4hld8Dcup7K7CvXlUswa5h7bAyyfqUJOsANEqeW',NULL,NULL,NULL,NULL,NULL,NULL,'admin',NULL,'2025-05-29 11:21:20');
+(5, 4, 'saroj', 'Tuesday', '02:04:00', '03:04:00', 'extra class', 'bandra', '2025-05-04', '2025-04-28 09:06:47');
+
 
 
 -- --------------------------------------------------------
@@ -143,7 +142,9 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `p
 (4, 'saroj', 's', 'saroj', '$2y$10$hHsu2CEamv6m9rkfkWifce40JmJ4o9dTe8Dk3HQH6kOQoFXQvc93G', '56565', 'saroj@gmail.com', '5', 'fh', '46465', 'mumbai', 'student', '2025-04-25', '2025-04-28 08:18:25'),
 (5, 'Bhakti', 'Patil', 'Bhakti', '$2y$10$wPCrHD.IhiuzadRUwb.F4Oq5N7s9Xt7iXMf9fonx9OkXdXc4pIub.', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', NULL, '2025-05-16 09:28:47'),
 (6, 'Lav', 'Smit', 'Lav', '$2y$10$n199DcyLVHn2NzGhw8Xy/eLbXqIiuG/fNGDOpzRw4K.TsNLeSm/ra', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', NULL, '2025-05-16 09:30:35'),
-(7, 'Teja', 'abc', 'Teja', '$2y$10$C8tRC.JQqxKYCl6UkWGuoOYnLmJk.XyIZRuE/1ag0hVR1W56ENLba', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', NULL, '2025-05-21 05:02:01');
+(7, 'Teja', 'abc', 'Teja', '$2y$10$C8tRC.JQqxKYCl6UkWGuoOYnLmJk.XyIZRuE/1ag0hVR1W56ENLba', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', NULL, '2025-05-21 05:02:01'),
+(8,'user','lname','user','$2y$10$LBZCYuuN/1i2VLntlF/9Ou5yASXrtHmcxP6t9alBophrgZWhpeIUW','1','user@gmail.com','11','pname','2','address','student','2025-05-29','2025-05-29 11:14:53'),
+(9,'admin','admin','admin','$2y$10$v9rKFRo9xZK7Lb4hld8Dcup7K7CvXlUswa5h7bAyyfqUJOsANEqeW',NULL,NULL,NULL,NULL,NULL,NULL,'admin',NULL,'2025-05-29 11:21:20');
 
 --
 -- Indexes for dumped tables
