@@ -88,7 +88,7 @@ input, select, textarea {
         
             <ul>
                 <li><a href="manage_issues_admin.php">Manage Student Issues</a></li>
-                <li><a href="Remedial.php">Manage Tuition</a></li>
+                <li><a href="Remedial.php">Manage Remedial</a></li>
                 <li><a href="laundary.php">Manage Laundary</a></li>
                 <li><a href="register.php">Register</a></li>
                 <li><a href="logout.php">Logout</a></li>
@@ -153,5 +153,33 @@ input, select, textarea {
         
         
     </div>
+
+
+    <?php 
+      $holidays = ['2025-07-17', '2025-07-29']; // Example holidays
+
+      function getBusinessDaysExcludingHolidays($year, $month, $holidays) {
+          $start = new DateTime("$year-$month-01");
+          $end = (clone $start)->modify('last day of this month');
+          $businessDays = 0;
+
+          while ($start <= $end) {
+              $dateStr = $start->format('Y-m-d');
+              $dayOfWeek = $start->format('N');
+
+              if ($dayOfWeek < 6 && !in_array($dateStr, $holidays)) {
+                  $businessDays++;
+              }
+
+              $start->modify('+1 day');
+          }
+
+          return $businessDays;
+      }
+
+      //select * from attendence where year(date)=$year and month(date)=$month
+      //%=query/days
+    
+    ?>
 </body>
 </html>
