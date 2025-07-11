@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ./");
     exit();
 }
+$year = $_GET['year'] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,63 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-   
+    <style>
+      
+form {
+    display: flex;
+    flex-direction: row;
+}
+input, select, textarea {
+      padding: initial;
+    margin: initial;
+    border: initial;
+    border-radius: initial;
+    font-size: initial;
+}
+  .year-filter-container {
+    background-color: #ffffffff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    margin: 2rem auto;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .year-filter-container label {
+    font-weight: 500;
+    color: #333;
+  }
+
+  .year-filter-container input[type="number"] {
+    border: 2px solid #2196f3;
+    border-radius: 0.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .year-filter-container input[type="number"]:focus {
+    border-color: #2196f3;
+    box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+    outline: none;
+  }
+
+  .year-filter-container .btn-primary {
+    background-color: #2196f3;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+  }
+
+  .year-filter-container .btn-secondary {
+    
+    border-radius: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+  }
+</style>
 </head>
 <body style="
   background-image: url('./background.jpg');
@@ -25,7 +82,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;">
-
+  
     <div class="container">
         <h1>Welcome, Admin!</h1>
         
@@ -38,8 +95,33 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             </ul>
         
     </div>
-    <div class="container table-responsive">
-        <table>
+    <div class="year-filter-container">
+      <form method="get" action="" class="row g-3 align-items-end">
+        <div class="col-md-6">
+          <label for="year" class="form-label">Enter Year:</label>
+          <input 
+            type="number" 
+            class="form-control" 
+            name="year" 
+            id="year" 
+            min="1900" 
+            max="2100" 
+            value="<?= htmlspecialchars($_GET['year'] ?? '') ?>" 
+            placeholder="e.g. 2025"
+          >
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-primary w-100">Filter</button>
+        </div>
+        <div class="col-md-3">
+          <a href="<?= strtok($_SERVER['REQUEST_URI'], '?') ?>" class="btn btn-secondary w-100">Clear</a>
+        </div>
+      </form>
+    </div>
+
+<div class="container table-responsive">
+      
+<table>
   <thead>
     <tr>
       <th scope="col">First Name</th>
@@ -49,7 +131,14 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
   </thead>
   <tbody>
     <?php 
-    $sql="SELECT first_name,last_name,id FROM users";
+    if ($year && is_numeric($year)){
+    $sql="SELECT first_name,last_name,id FROM users where year(date_of_admission)=$year";
+    }
+    else{
+      $sql = "SELECT first_name, last_name, id FROM users";
+    }
+
+
     $res=$conn->query($sql);
     while($row=$res->fetch_assoc()){
     ?>

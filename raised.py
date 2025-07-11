@@ -3,7 +3,7 @@ import sys
 # fc3dca0b05e100fbaf50153bd4fa9445
 
 sender = "Hostel Management Sytem <hello@demomailtrap.co>"
-receiver = "Admin <ishaankkamath@gmail.com>"
+receiver = "Admin <!!!name!!!@gmail.com>"
 
 message = f"""\
 Subject: There is an new issue request.
