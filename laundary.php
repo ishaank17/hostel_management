@@ -31,6 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $role == 'student') {
         }
 
         echo "<script>alert('Laundry request added successfully!');</script>";
+        $email=$_SESSION['email'];
+        shell_exec("python req_laundry.py $email");
         header("Location: student_dashboard.php");
     } else {
         echo "<script>alert('Please select at least one item and enter quantity.');</script>";
@@ -111,6 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $role == 'student') {
                     <th>Date</th>
                     <th>Particular</th>
                     <th>Quantity</th>
+                    <th>Delete</th>
                 </tr>
                 <?php
                 $result = $conn->query("SELECT * FROM laundry");
@@ -123,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $role == 'student') {
                             <td>{$row['date']}</td>
                             <td>{$row['particular']}</td>
                             <td>{$row['quantity']}</td>
+                            <td><a href='delete_laundry.php?id={$row['id']}'>Delete</a></td>
                         </tr>";
                     $sr++;
                 }

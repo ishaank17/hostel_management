@@ -1,15 +1,14 @@
 import smtplib
 import sys
-# fc3dca0b05e100fbaf50153bd4fa9445
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
-sender = "Hostel Management Sytem <hello@demomailtrap.co>"
-receiver = "User <"+sys.argv[1]+">"
+sender_email = "ishaankkamath@gmail.com"
+password = "tctn ncrr kqcg ydcl"  
+receiver_email = "\""+sys.argv[1]+"\""
 
-message = f"""\
-Subject: There is an  update on your issue request.
-To: {receiver}
-From: {sender}
-
+subject = "There is an  update on your issue request"
+body = """
 Kindly login into your hostel portal to view more details
 
 
@@ -19,9 +18,21 @@ Kindly login into your hostel portal to view more details
 
 
 This is an Auto-Generated Email"""
-# print(receiver)
-with smtplib.SMTP("live.smtp.mailtrap.io", 587) as server:
-    server.starttls()
-    server.login("api", "fc3dca0b05e100fbaf50153bd4fa9445")
-    server.sendmail(sender, receiver, message)
+
+
+message = MIMEMultipart()
+message["From"] = sender_email
+message["To"] = receiver_email
+message["Subject"] = subject
+
+message.attach(MIMEText(body, "plain"))
+
+try:
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message.as_string())
+    print("Email sent successfully!")
+except Exception as e:
+    print("Failed to send email:", e)
+
     

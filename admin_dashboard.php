@@ -7,6 +7,31 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 $year = $_GET['year'] ?? null;
+$date = $_GET['date'] ?? date('Y-m-d');
+$today = date('Y-m-d');
+
+$check = mysqli_query($conn, "SELECT COUNT(*) AS count FROM attendence WHERE date = '$today'");
+$data = mysqli_fetch_assoc($check);
+
+if ($data['count'] == 0) {
+    $students = mysqli_query($conn, "SELECT id FROM users");
+    $inserted = 0;
+
+    while ($row = mysqli_fetch_assoc($students)) {
+        $sid = $row['id'];
+        mysqli_query($conn, "
+            INSERT INTO attendence (student_id, date, status)
+            VALUES ($sid, '$today', 'Absent')
+        ");
+        $inserted++;
+    }
+
+    echo "<script>console.log('Marked all $inserted students as Absent for $today')</script>";
+} else {
+    echo "<script>console.log('Attendance already marked for $today')</script>";
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,9 +115,12 @@ input, select, textarea {
                 <li><a href="manage_issues_admin.php">Manage Student Issues</a></li>
                 <li><a href="Remedial.php">Manage Remedial</a></li>
                 <li><a href="laundary.php">Manage Laundary</a></li>
+                <li><a href="view_attendence.php">View Attendance</a></li>
                 <li><a href="register.php">Register</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
+
+
         
     </div>
     <div class="year-filter-container">
@@ -120,13 +148,16 @@ input, select, textarea {
     </div>
 
 <div class="container table-responsive">
-      
+ 
 <table>
   <thead>
     <tr>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Deregister</th>
+      <th><form action="admin_dashboard.php" method="get">
+        <input onchange="this.form.submit()" type="date" name="date" id='selectedDate' value="<?=$date?>" required>
+      </form></th>
     </tr>
   </thead>
   <tbody>
@@ -141,11 +172,27 @@ input, select, textarea {
 
     $res=$conn->query($sql);
     while($row=$res->fetch_assoc()){
+      $id=$row['id'];
+    $sql1 = "SELECT status FROM attendence where student_id=$id and  date= '$date' ";
+    // echo $sql1;
+    $row1=$conn->query($sql1)->fetch_assoc();
+    $status=$row1['status'];
     ?>
         <tr>
             <td><?=$row['first_name']?></td>
             <td><?=$row['last_name']?></td>
             <td><a href="delete.php?id=<?=$row['id']?>">Click Here</a></td>
+            <td>
+              <form method="POST" action="submit_attendance.php" id='myForm'>     
+                <input type="hidden" name='id' value="<?=$row['id']?>">
+                <input type="hidden" name='date' class="attendanceDate" value="<?=$date?>">
+                <select name='status' onchange="submitWithValidation(this)">
+                    <option <?= $status === 'Present' ? 'selected' : '' ?> value='Present'>Present</option>
+                    <option <?= $status === 'Absent' ? 'selected' : '' ?> value='Absent'>Absent</option>
+                    <option <?= $status === 'Leave' ? 'selected' : '' ?> value='Leave'>Leave</option>
+                </select>
+              </form>
+            </td>
         </tr>
     <?php }?>
   </tbody>
@@ -154,32 +201,19 @@ input, select, textarea {
         
     </div>
 
+<script>
 
-    <?php 
-      $holidays = ['2025-07-17', '2025-07-29']; // Example holidays
-
-      function getBusinessDaysExcludingHolidays($year, $month, $holidays) {
-          $start = new DateTime("$year-$month-01");
-          $end = (clone $start)->modify('last day of this month');
-          $businessDays = 0;
-
-          while ($start <= $end) {
-              $dateStr = $start->format('Y-m-d');
-              $dayOfWeek = $start->format('N');
-
-              if ($dayOfWeek < 6 && !in_array($dateStr, $holidays)) {
-                  $businessDays++;
-              }
-
-              $start->modify('+1 day');
-          }
-
-          return $businessDays;
-      }
-
-      //select * from attendence where year(date)=$year and month(date)=$month
-      //%=query/days
-    
-    ?>
+function submitWithValidation(selectElement) {
+  console.log("started")
+  const form = selectElement.form;
+  if (form.checkValidity()) {
+    console.log("submit")
+    form.submit(); // only if valid
+  } else {
+    form.reportValidity(); // show browser error popup
+  }
+}
+</script>
 </body>
+
 </html>

@@ -1,27 +1,25 @@
-
 import smtplib
+import sys
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-admin="ishaankkamath@gmail.com"
 
-
-sender_email = admin
+sender_email = "ishaankkamath@gmail.com"
 password = "tctn ncrr kqcg ydcl"  
-receiver_email = admin
+receiver_email = "\""+sys.argv[1]+"\""
 
-subject = "There is an new issue request."
-body ="""Kindly login into your hostel portal to view more details
-
-
-
+subject = "Your Laundry has been requested"
+body = """
+Your Laundry has been requested
 
 
 
 
-This is an Auto-Generated Email
-"""
 
-# Create the message
+
+
+This is an Auto-Generated Email"""
+
+
 message = MIMEMultipart()
 message["From"] = sender_email
 message["To"] = receiver_email

@@ -58,7 +58,22 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;">
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const today = new Date();
+  const dayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
 
+  if ([2, 4, 6].includes(dayOfWeek)) {
+    const todayStr = today.toISOString().split('T')[0]; // Format: "YYYY-MM-DD"
+    const shownDate = localStorage.getItem('laundryAlertDate');
+
+    if (shownDate !== todayStr) {
+      alert("Reminder: It's laundry day today! Don’t forget to send it.");
+      localStorage.setItem('laundryAlertDate', todayStr);
+    }
+  }
+});
+</script>
     <div class="container">
         <h1>Welcome, <?=$_SESSION["username"]?>!</h1>
         
